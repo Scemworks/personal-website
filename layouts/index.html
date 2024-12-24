@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="profile-card">
+    <div class="profile-image-wrapper">
+        <img src="{{ .Site.Params.profileMode.imageUrl }}" alt="{{ .Site.Params.profileMode.imageTitle }}" class="profile-image">
+    </div>
+    
+    <div class="profile-name">{{ .Site.Params.profileMode.title }}</div>
+    <div class="profile-subtitle">{{ .Site.Params.profileMode.subtitle }}</div>
+    <div class="profile-location">{{ .Site.Params.profileMode.location }}</div>
+    
+    <div class="profile-bio">
+        {{ .Content }}
+    </div>
+    
+    <div class="social-icons">
+        {{ range .Site.Params.socialIcons }}
+            <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .title }}">
+                <i class="fab fa-{{ .name }}"></i>
+            </a>
+        {{ end }}
+    </div>
+    
+    <div class="action-buttons">
+        <a href="/projects" class="btn">🖥️ Projects</a>
+        <a href="/codes" class="btn">👨‍💻 Codes</a>
+        <a href="/resume.pdf" class="btn" download>📄 Resume</a>
+    </div>
+</div>
+{{ end }}

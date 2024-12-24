@@ -1,0 +1,88 @@
+baseURL = "https://scemworks.github.io/"
+languageCode = 'en-us'
+title = "Scemworks"
+paginate = 5
+theme = "PaperMod"
+defaultContentLanguage = "en"
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[minify]
+disableXML = true
+minifyOutput = true
+
+[params]
+env = "production"
+title = "Scemworks"
+description = "Portfolio of Mohammed Shadin Parangodath"
+keywords = ["Portfolio", "Blog", "Developer", "Software"]
+author = "Mohammed Shadin"
+DateFormat = "January 2, 2006"
+defaultTheme = "auto"
+disableThemeToggle = false
+ShowShareButtons = true
+ShowReadingTime = true
+displayFullLangName = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowRssButtonInSectionTermList = true
+ShowToc = true
+disableSpecial1stPost = false
+
+[params.profileMode]
+enabled = true
+title = "Mohammed Shadin"
+subtitle = "Software Engineer"
+imageUrl = "/images/profile.jpg"
+imageTitle = "Profile Picture"
+imageWidth = 150
+imageHeight = 150
+location = "Kerala, India"
+
+[params.assets]
+favicon = "/favicon.ico"
+favicon16x16 = "/favicon-16x16.png"
+favicon32x32 = "/favicon-32x32.png"
+apple_touch_icon = "/apple-touch-icon.png"
+safari_pinned_tab = "/safari-pinned-tab.svg"
+css = ["css/extended.css"]
+disableHLJS = true
+
+[params.homeInfoParams]
+Title = "Welcome to my Portfolio"
+Content = "I'm a passionate software developer and Computer Science Engineering student. I love building innovative solutions and learning new technologies."
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/scemworks"
+title = "GitHub"
+
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://linkedin.com/in/mohammedshadin"
+title = "LinkedIn"
+
+[[params.socialIcons]]
+name = "twitter"
+url = "https://twitter.com/scemworks"
+title = "Twitter"
+
+[[params.socialIcons]]
+name = "email"
+url = "mailto:contact@scemworks.com"
+title = "Email"
+
+[menu]
+[[menu.main]]
+    name = "Projects"
+    url = "/projects"
+    weight = 1
+
+[[menu.main]]
+    name = "ATP"
+    url = "/atp"
+    weight = 2

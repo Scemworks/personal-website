@@ -1,0 +1,29 @@
+{{ define "main" }}
+<article class="project-mode-card">
+    <header class="project-header">
+        <h1>{{ .Title }}</h1>
+        {{ with .Description }}
+        <p class="project-description">{{ . }}</p>
+        {{ end }}
+    </header>
+
+    <div class="project-content">
+        {{ .Content }}
+    </div>
+
+    <footer class="project-footer">
+        <div class="post-nav">
+            <div class="next-post">
+                {{ with .NextInSection }}
+                <a href="{{ .RelPermalink }}">← {{ .Title }}</a>
+                {{ end }}
+            </div>
+            <div class="prev-post">
+                {{ with .PrevInSection }}
+                <a href="{{ .RelPermalink }}">{{ .Title }} →</a>
+                {{ end }}
+            </div>
+        </div>
+    </footer>
+</article>
+{{ end }}

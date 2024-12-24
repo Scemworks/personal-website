@@ -1,0 +1,51 @@
+{{ define "main" }}
+<article class="post-single">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-image-container">
+                <img src="{{ .Site.Params.profileMode.imageUrl }}" alt="Profile Picture" class="profile-image">
+                <div class="profile-image-border"></div>
+            </div>
+            <header class="profile-info">
+                <h1 class="profile-name">{{ .Site.Params.profileMode.title }}</h1>
+                <p class="profile-title">{{ .Site.Params.profileMode.subtitle }}</p>
+                {{ with .Site.Params.profileMode.location }}
+                <p class="profile-location">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    {{ . }}
+                </p>
+                {{ end }}
+            </header>
+        </div>
+
+        <div class="profile-content">
+            {{ .Content }}
+            {{ with .Site.Params.profileMode.bio }}
+            <p>{{ . }}</p>
+            {{ end }}
+        </div>
+
+        <div class="profile-actions">
+            <a href="/projects" class="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                <span>🖥️ Projects</span>
+            </a>
+            <a href="/codes" class="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                <span>👨‍💻 Codes</span>
+            </a>
+
+            {{ with .Site.Params.resume }}
+            <a href="{{ . }}" class="button" download>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>📄Resume</span>
+            </a>
+            {{ end }}
+        </div>
+
+        <div class="profile-social">
+            {{ partial "social-icons.html" . }}
+        </div>
+    </div>
+</article>
+{{ end }}

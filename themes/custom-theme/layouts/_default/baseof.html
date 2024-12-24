@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ .Site.Params.description }}">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Params.title }}{{ end }}</title>
+    
+    {{- /* Theme CSS */ -}}
+    {{ $style := resources.Get "css/extended.css" }}
+    {{ with $style }}
+      {{ $secureCSS := . | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $secureCSS.RelPermalink }}" integrity="{{ $secureCSS.Data.Integrity }}" crossorigin="anonymous">
+    {{ end }}
+
+    <!-- Favicons -->
+    {{ with .Site.Params.assets.favicon }}
+    <link rel="shortcut icon" href="{{ . }}" />
+    {{ end }}
+    {{ with .Site.Params.assets.favicon16x16 }}
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ . }}" />
+    {{ end }}
+    {{ with .Site.Params.assets.favicon32x32 }}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ . }}" />
+    {{ end }}
+    {{ with .Site.Params.assets.apple_touch_icon }}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ . }}" />
+    {{ end }}
+    {{ with .Site.Params.assets.safari_pinned_tab }}
+    <link rel="mask-icon" href="{{ . }}" color="#5bbad5" />
+    {{ end }}
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        {{ partial "header.html" . }}
+        <main>
+            {{ block "main" . }}{{ end }}
+        </main>
+        {{ partial "footer.html" . }}
+    </div>
+
+    {{- /* Theme and Navigation JS */ -}}
+    {{ $navigation := resources.Get "js/navigation.js" }}
+    {{ with $navigation }}
+        {{ $secureJS := . | minify | fingerprint }}
+        <script src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}" crossorigin="anonymous"></script>
+    {{ end }}
+
+    {{- /* Navigation JS */ -}}
+    {{ $navigation := resources.Get "js/navigation.js" }}
+    {{ with $navigation }}
+        {{ $secureJS := . | minify | fingerprint }}
+        <script src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}" crossorigin="anonymous"></script>
+    {{ end }}
+
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Set initial theme
+        const savedTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('theme', savedTheme);
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                document.documentElement.setAttribute('theme', e.matches ? 'dark' : 'light');
+            }
+        });
+    </script>
+</body>
+</html>

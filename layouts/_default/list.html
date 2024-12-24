@@ -1,0 +1,15 @@
+{{ define "main" }}
+<ul id="post-list">
+    {{ range .Pages }}
+    <li class="post">
+        <article class="project-card project-item">
+            <h2><a href="{{ .RelPermalink }}" class="post-link">{{ .Title }}</a></h2>
+            <p>{{ .Summary }}</p>
+            <div class="project-links">
+                <a href="{{ .RelPermalink }}" class="btn">View Details</a>
+            </div>
+        </article>
+    </li>
+    {{ end }}
+</ul>
+{{ end }}
